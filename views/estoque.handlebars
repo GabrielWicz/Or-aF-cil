@@ -1,0 +1,102 @@
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #f2f2f2;
+    }
+
+    button {
+        padding: 5px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.85;
+    }
+</style>
+<ul>
+    <h1>Estoque</h1>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>Ações</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {{#each produtos}}
+            <tr>
+                <td>{{nome}}</td>
+                <td>{{categoria}}</td>
+                <td>{{quantidade}}</td>
+                <td>{{formatarMoeda valor}}</td>
+                <td>
+                    <form action="/produtos/editar/{{id}}" method="GET" style="display:inline;">
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <br>
+    <hr />
+
+    <h2>Cadastrar Novo Produto</h2>
+    <form action="/produtos" method="POST"
+        style="max-width: 400px; margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <div style="margin-bottom: 10px;">
+            <label for="nome" style="display: block; font-weight: bold; margin-bottom: 4px;">Nome:</label>
+            <input type="text" id="nome" name="nome" required
+                style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="categoria" style="display: block; font-weight: bold; margin-bottom: 4px;">Categoria:</label>
+            <input type="text" id="categoria" name="categoria" required
+                style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="quantidade" style="display: block; font-weight: bold; margin-bottom: 4px;">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="0" required
+                style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="valor" style="display: block; font-weight: bold; margin-bottom: 4px;">Valor:</label>
+            <input type="number" id="valor" name="valor" min="0" step="0.01" required
+                style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" />
+        </div>
+
+        <button type="submit"
+            style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Cadastrar
+            Produto</button>
+    </form>
+
+    <form action="/produtos" method="POST"
+        style="max-width: 210px; margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <a href="/"
+            style="display: inline-block; margin-left: 10px; padding: 10px 15px; background-color: #6c757d; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">Voltar
+            para Tela Inicial</a>
+    </form>
+
+</ul>
