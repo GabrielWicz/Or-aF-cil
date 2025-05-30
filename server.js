@@ -231,6 +231,21 @@ app.get('/orcamento', async (req, res) => {
   }
 });
 
+function mostrarTodosProdutos() {
+    const lista = document.getElementById("lista-produtos");
+    lista.innerHTML = ""; // limpa
+
+    produtos.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = `${p.nome} - ${p.categoria}`;
+        li.onclick = () => adicionarProduto(p);
+        lista.appendChild(li);
+    });
+}
+
+
+
+
 app.post('/produtos/novo', async (req, res) => {
   try {
     const { nome, categoria, quantidade, valor } = req.body;
