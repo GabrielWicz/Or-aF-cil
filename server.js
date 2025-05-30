@@ -141,13 +141,13 @@ app.post('/gerar-pdf', (req, res) => {
   doc.text('Valor Unit.', 380, startY, { width: 80, align: 'right' });
   doc.text('Total', 470, startY, { width: 80, align: 'right' });
 
-  doc.moveDown(0.2); // Pequeno espaço depois do cabeçalho
+  doc.moveDown(0.2); 
   doc.font('Helvetica');
 
   let totalGeral = 0;
   let rowY = doc.y;
 
-  // Linhas da tabela
+  
   produtos.forEach(p => {
     const total = p.valor * p.quantidade;
     totalGeral += total;
@@ -158,7 +158,7 @@ app.post('/gerar-pdf', (req, res) => {
     doc.text(`R$ ${p.valor.toFixed(2)}`, 380, rowY, { width: 80, align: 'right' });
     doc.text(`R$ ${total.toFixed(2)}`, 470, rowY, { width: 80, align: 'right' });
 
-    rowY += 18; // controla a altura entre linhas (ajuste se necessário)
+    rowY += 18;
   });
 
   // Linha separadora antes do total geral
