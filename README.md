@@ -10,3 +10,5 @@ npm install mysql2
 npm install pdfkit
 npm install exceljs
 npm install --save-dev nodemon
+npm install pg pg-hstore
+
