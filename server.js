@@ -3,7 +3,7 @@ const Handlebars = require('handlebars');
 const path = require('path');
 const { engine } = require('express-handlebars');
 const sequelize = require('./sequelize');
-const Produto = require('./models/produto');
+const Produto = require('./models/Produto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
